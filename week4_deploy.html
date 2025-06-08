@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Version Control & Deployment</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        .code-font {
+            font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container p-16">
+        <div class="mb-8">
+            <h1 class="text-5xl font-bold text-white mb-4">Version Control & Deployment</h1>
+            <p class="text-xl text-blue-100">Sharing your work with the world</p>
+        </div>
+        
+        <div class="grid grid-cols-2 gap-8 h-96">
+            <div>
+                <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg p-6 border border-white border-opacity-20 mb-6">
+                    <h3 class="text-xl font-semibold text-white mb-4 flex items-center">
+                        <i class="fab fa-git-alt text-orange-300 mr-3"></i>
+                        Git Basics
+                    </h3>
+                    <div class="space-y-3 text-blue-100">
+                        <div class="flex items-center">
+                            <i class="fas fa-plus text-green-300 mr-2"></i>
+                            <span><code class="code-font bg-gray-800 px-2 py-1 rounded">git add .</code> - Stage changes</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-save text-yellow-300 mr-2"></i>
+                            <span><code class="code-font bg-gray-800 px-2 py-1 rounded">git commit -m "message"</code></span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-upload text-blue-300 mr-2"></i>
+                            <span><code class="code-font bg-gray-800 px-2 py-1 rounded">git push</code> - Upload to GitHub</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg p-6 border border-white border-opacity-20">
+                    <h3 class="text-lg font-semibold text-white mb-3">Deployment Options</h3>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex items-center justify-between bg-gray-800 bg-opacity-50 px-3 py-2 rounded">
+                            <span class="text-blue-100">GitHub Pages</span>
+                            <span class="text-green-300">Free</span>
+                        </div>
+                        <div class="flex items-center justify-between bg-gray-800 bg-opacity-50 px-3 py-2 rounded">
+                            <span class="text-blue-100">Netlify</span>
+                            <span class="text-green-300">Free</span>
+                        </div>
+                        <div class="flex items-center justify-between bg-gray-800 bg-opacity-50 px-3 py-2 rounded">
+                            <span class="text-blue-100">Vercel</span>
+                            <span class="text-green-300">Free</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div>
+                <div class="bg-gray-900 rounded-lg p-6 border border-white border-opacity-20 mb-6">
+                    <h3 class="text-lg font-semibold text-white mb-4 flex items-center">
+                        <i class="fas fa-rocket text-green-400 mr-2"></i>
+                        Deployment Steps
+                    </h3>
+                    <div class="space-y-4 text-sm">
+                        <div class="flex items-start">
+                            <div class="bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-1 text-xs">1</div>
+                            <div>
+                                <div class="text-white font-semibold">Create Repository</div>
+                                <div class="text-gray-300">Initialize Git and create GitHub repo</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-green-500 text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-1 text-xs">2</div>
+                            <div>
+                                <div class="text-white font-semibold">Push Code</div>
+                                <div class="text-gray-300">Upload your HTML, CSS, JS files</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-purple-500 text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-1 text-xs">3</div>
+                            <div>
+                                <div class="text-white font-semibold">Enable Pages</div>
+                                <div class="text-gray-300">Activate GitHub Pages in settings</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-yellow-500 text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-1 text-xs">4</div>
+                            <div>
+                                <div class="text-white font-semibold">Go Live!</div>
+                                <div class="text-gray-300">Your site is now online</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg p-6 border border-white border-opacity-20">
+                    <h3 class="text-lg font-semibold text-white mb-3">Your Website URL</h3>
+                    <div class="bg-gray-800 p-3 rounded code-font text-green-300 text-sm">
+                        https://username.github.io/repository-name
+                    </div>
+                    <p class="text-blue-100 text-sm mt-2">
+                        <i class="fas fa-info-circle mr-1"></i>
+                        Replace 'username' and 'repository-name' with your actual GitHub details
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

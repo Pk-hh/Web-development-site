@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 3: Interactivity with JavaScript</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        .code-font {
+            font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container flex p-16">
+        <div class="flex-1 pr-8">
+            <div class="mb-8">
+                <div class="inline-flex items-center bg-white bg-opacity-30 rounded-full px-4 py-2 mb-4">
+                    <span class="text-gray-800 font-semibold">Week 3</span>
+                </div>
+                <h1 class="text-5xl font-bold text-gray-800 mb-4 leading-tight">
+                    Interactivity with JavaScript
+                </h1>
+                <p class="text-xl text-gray-700 mb-8">
+                    Adding dynamic behavior and user interaction to web pages
+                </p>
+            </div>
+            
+            <div class="space-y-6">
+                <div class="bg-white bg-opacity-40 backdrop-blur-sm rounded-lg p-6 border border-white border-opacity-30">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3 flex items-center">
+                        <i class="fab fa-js-square text-yellow-500 mr-3"></i>
+                        JavaScript Basics
+                    </h3>
+                    <ul class="text-gray-700 space-y-2">
+                        <li>• Variables and data types</li>
+                        <li>• Functions and control flow</li>
+                        <li>• Working with arrays and objects</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white bg-opacity-40 backdrop-blur-sm rounded-lg p-6 border border-white border-opacity-30">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3 flex items-center">
+                        <i class="fas fa-mouse-pointer text-blue-500 mr-3"></i>
+                        DOM Manipulation
+                    </h3>
+                    <ul class="text-gray-700 space-y-2">
+                        <li>• Selecting HTML elements</li>
+                        <li>• Changing content and styles</li>
+                        <li>• Handling user events (clicks, forms)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="flex-1 pl-8">
+            <div class="bg-white bg-opacity-40 backdrop-blur-sm rounded-lg p-6 border border-white border-opacity-30 mb-6">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4">JavaScript Data Types</h3>
+                <img src="/home/ubuntu/assets/week3/js_variables_datatypes.jpeg" alt="JavaScript Variables and Data Types" class="w-full h-40 object-contain rounded-lg bg-white bg-opacity-50 p-4">
+            </div>
+            
+            <div class="bg-gray-900 rounded-lg p-6 border border-white border-opacity-30">
+                <h3 class="text-lg font-semibold text-white mb-4 flex items-center">
+                    <i class="fas fa-code text-green-400 mr-2"></i>
+                    JavaScript Example
+                </h3>
+                <pre class="code-font text-sm text-green-400 overflow-y-auto h-48">
+<span class="text-gray-400">// Variables and functions</span>
+<span class="text-blue-400">let</span> <span class="text-yellow-400">message</span> = <span class="text-pink-400">"Hello World!"</span>;
+<span class="text-blue-400">const</span> <span class="text-yellow-400">button</span> = document.<span class="text-green-400">getElementById</span>(<span class="text-pink-400">'myButton'</span>);
+
+<span class="text-gray-400">// Event handling</span>
+<span class="text-yellow-400">button</span>.<span class="text-green-400">addEventListener</span>(<span class="text-pink-400">'click'</span>, <span class="text-blue-400">function</span>() {
+    <span class="text-yellow-400">document</span>.<span class="text-green-400">getElementById</span>(<span class="text-pink-400">'output'</span>).<span class="text-green-400">textContent</span> = <span class="text-yellow-400">message</span>;
+    <span class="text-yellow-400">console</span>.<span class="text-green-400">log</span>(<span class="text-pink-400">'Button clicked!'</span>);
+});
+
+<span class="text-gray-400">// DOM manipulation</span>
+<span class="text-blue-400">function</span> <span class="text-yellow-400">changeColor</span>() {
+    <span class="text-blue-400">const</span> <span class="text-yellow-400">element</span> = document.<span class="text-green-400">querySelector</span>(<span class="text-pink-400">'.highlight'</span>);
+    <span class="text-yellow-400">element</span>.<span class="text-green-400">style</span>.<span class="text-green-400">backgroundColor</span> = <span class="text-pink-400">'yellow'</span>;
+}
+                </pre>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

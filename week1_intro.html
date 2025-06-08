@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 1: Introduction to Web Development & HTML</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        .code-font {
+            font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container flex p-16">
+        <div class="flex-1 pr-8">
+            <div class="mb-8">
+                <div class="inline-flex items-center bg-white bg-opacity-20 rounded-full px-4 py-2 mb-4">
+                    <span class="text-white font-semibold">Week 1</span>
+                </div>
+                <h1 class="text-5xl font-bold text-white mb-4 leading-tight">
+                    Introduction to Web Development & HTML
+                </h1>
+                <p class="text-xl text-pink-100 mb-8">
+                    Understanding how the web works and building your first web pages
+                </p>
+            </div>
+            
+            <div class="space-y-6">
+                <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg p-6 border border-white border-opacity-20">
+                    <h3 class="text-xl font-semibold text-white mb-3 flex items-center">
+                        <i class="fas fa-globe text-blue-300 mr-3"></i>
+                        How the Web Works
+                    </h3>
+                    <ul class="text-pink-100 space-y-2">
+                        <li>• Client-server model</li>
+                        <li>• HTTP/HTTPS protocols</li>
+                        <li>• Web browsers and servers</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg p-6 border border-white border-opacity-20">
+                    <h3 class="text-xl font-semibold text-white mb-3 flex items-center">
+                        <i class="fas fa-code text-orange-300 mr-3"></i>
+                        HTML Fundamentals
+                    </h3>
+                    <ul class="text-pink-100 space-y-2">
+                        <li>• Document structure (DOCTYPE, html, head, body)</li>
+                        <li>• Common HTML tags and elements</li>
+                        <li>• Semantic HTML for better structure</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="flex-1 pl-8">
+            <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg p-6 border border-white border-opacity-20 mb-6">
+                <h3 class="text-lg font-semibold text-white mb-4">Client-Server Model</h3>
+                <img src="/home/ubuntu/assets/week1/client_server_model.png" alt="Client-Server Model" class="w-full h-48 object-contain rounded-lg bg-white bg-opacity-20 p-4">
+            </div>
+            
+            <div class="bg-gray-900 rounded-lg p-6 border border-white border-opacity-20">
+                <h3 class="text-lg font-semibold text-white mb-4 flex items-center">
+                    <i class="fas fa-file-code text-green-300 mr-2"></i>
+                    Basic HTML Structure
+                </h3>
+                <pre class="code-font text-sm text-green-300 overflow-x-auto">
+<span class="text-gray-400">&lt;!DOCTYPE html&gt;</span>
+<span class="text-blue-300">&lt;html&gt;</span>
+  <span class="text-blue-300">&lt;head&gt;</span>
+    <span class="text-yellow-300">&lt;title&gt;</span>My First Page<span class="text-yellow-300">&lt;/title&gt;</span>
+  <span class="text-blue-300">&lt;/head&gt;</span>
+  <span class="text-blue-300">&lt;body&gt;</span>
+    <span class="text-yellow-300">&lt;h1&gt;</span>Hello World!<span class="text-yellow-300">&lt;/h1&gt;</span>
+    <span class="text-yellow-300">&lt;p&gt;</span>Welcome to web development<span class="text-yellow-300">&lt;/p&gt;</span>
+  <span class="text-blue-300">&lt;/body&gt;</span>
+<span class="text-blue-300">&lt;/html&gt;</span>
+                </pre>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

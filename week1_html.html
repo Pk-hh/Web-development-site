@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Fundamentals</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        .code-font {
+            font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container p-16">
+        <div class="mb-8">
+            <h1 class="text-5xl font-bold text-gray-800 mb-4">HTML Fundamentals</h1>
+            <p class="text-xl text-gray-600">Building blocks of web pages</p>
+        </div>
+        
+        <div class="grid grid-cols-2 gap-8 h-96">
+            <div>
+                <div class="bg-white rounded-lg shadow-lg p-6 mb-6 h-64">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-sitemap text-orange-500 mr-3"></i>
+                        HTML Document Structure
+                    </h3>
+                    <img src="/home/ubuntu/assets/week1/html_document_structure.png" alt="HTML Document Structure" class="w-full h-40 object-contain">
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-3">Common HTML Tags</h3>
+                    <div class="grid grid-cols-2 gap-2 text-sm">
+                        <div class="bg-orange-100 px-3 py-2 rounded code-font">&lt;h1&gt; - &lt;h6&gt;</div>
+                        <div class="bg-blue-100 px-3 py-2 rounded code-font">&lt;p&gt;</div>
+                        <div class="bg-green-100 px-3 py-2 rounded code-font">&lt;a&gt;</div>
+                        <div class="bg-purple-100 px-3 py-2 rounded code-font">&lt;img&gt;</div>
+                        <div class="bg-yellow-100 px-3 py-2 rounded code-font">&lt;ul&gt;, &lt;ol&gt;</div>
+                        <div class="bg-pink-100 px-3 py-2 rounded code-font">&lt;div&gt;</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div>
+                <div class="bg-gray-900 rounded-lg p-6 h-full">
+                    <h3 class="text-lg font-semibold text-white mb-4 flex items-center">
+                        <i class="fas fa-code text-green-400 mr-2"></i>
+                        HTML Example
+                    </h3>
+                    <pre class="code-font text-sm text-green-400 overflow-y-auto h-80">
+<span class="text-gray-400">&lt;!DOCTYPE html&gt;</span>
+<span class="text-blue-400">&lt;html lang="en"&gt;</span>
+<span class="text-blue-400">&lt;head&gt;</span>
+    <span class="text-yellow-400">&lt;meta charset="UTF-8"&gt;</span>
+    <span class="text-yellow-400">&lt;title&gt;</span>My Website<span class="text-yellow-400">&lt;/title&gt;</span>
+<span class="text-blue-400">&lt;/head&gt;</span>
+<span class="text-blue-400">&lt;body&gt;</span>
+    <span class="text-yellow-400">&lt;header&gt;</span>
+        <span class="text-yellow-400">&lt;h1&gt;</span>Welcome to My Site<span class="text-yellow-400">&lt;/h1&gt;</span>
+        <span class="text-yellow-400">&lt;nav&gt;</span>
+            <span class="text-yellow-400">&lt;ul&gt;</span>
+                <span class="text-yellow-400">&lt;li&gt;&lt;a href="#home"&gt;</span>Home<span class="text-yellow-400">&lt;/a&gt;&lt;/li&gt;</span>
+                <span class="text-yellow-400">&lt;li&gt;&lt;a href="#about"&gt;</span>About<span class="text-yellow-400">&lt;/a&gt;&lt;/li&gt;</span>
+            <span class="text-yellow-400">&lt;/ul&gt;</span>
+        <span class="text-yellow-400">&lt;/nav&gt;</span>
+    <span class="text-yellow-400">&lt;/header&gt;</span>
+    
+    <span class="text-yellow-400">&lt;main&gt;</span>
+        <span class="text-yellow-400">&lt;section id="home"&gt;</span>
+            <span class="text-yellow-400">&lt;h2&gt;</span>About Me<span class="text-yellow-400">&lt;/h2&gt;</span>
+            <span class="text-yellow-400">&lt;p&gt;</span>I'm learning web development!<span class="text-yellow-400">&lt;/p&gt;</span>
+            <span class="text-yellow-400">&lt;img src="photo.jpg" alt="My photo"&gt;</span>
+        <span class="text-yellow-400">&lt;/section&gt;</span>
+    <span class="text-yellow-400">&lt;/main&gt;</span>
+    
+    <span class="text-yellow-400">&lt;footer&gt;</span>
+        <span class="text-yellow-400">&lt;p&gt;</span>&copy; 2024 My Website<span class="text-yellow-400">&lt;/p&gt;</span>
+    <span class="text-yellow-400">&lt;/footer&gt;</span>
+<span class="text-blue-400">&lt;/body&gt;</span>
+<span class="text-blue-400">&lt;/html&gt;</span>
+                    </pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
