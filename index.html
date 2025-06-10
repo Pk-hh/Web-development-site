@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Pradeep's Daily Timetable</title>
+  <title>Pradeep's Rotating Study Timetable</title>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -11,18 +11,18 @@
       color: #333;
       padding: 20px;
     }
-    h1 {
+    h1, h2 {
       text-align: center;
       color: #005f73;
     }
     table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 30px;
+      margin-top: 20px;
     }
     th, td {
       border: 1px solid #ccc;
-      padding: 12px;
+      padding: 10px;
       text-align: left;
     }
     th {
@@ -32,45 +32,68 @@
     tr:nth-child(even) {
       background-color: #e0fbfc;
     }
-    @media print {
-      body {
-        background: white;
-        color: black;
-      }
-      table {
-        page-break-inside: auto;
-      }
-    }
   </style>
 </head>
 <body>
-  <h1>Pradeep's Balanced Daily Timetable</h1>
-  <table>
-    <thead>
-      <tr>
-        <th>Time</th>
-        <th>Activity</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td>5:00 - 5:30 AM</td><td>Wake up + Freshen up</td></tr>
-      <tr><td>5:30 - 6:00 AM</td><td>Workout / Exercise</td></tr>
-      <tr><td>6:00 - 6:30 AM</td><td>Breakfast</td></tr>
-      <tr><td>6:30 - 8:00 AM</td><td>Study: VLSI</td></tr>
-      <tr><td>8:00 - 9:30 AM</td><td>Study: Embedded Systems</td></tr>
-      <tr><td>9:30 - 9:45 AM</td><td>Short Break (snack/stretch)</td></tr>
-      <tr><td>9:45 - 11:15 AM</td><td>Study: Game Design</td></tr>
-      <tr><td>11:15 - 12:15 PM</td><td>Lunch + Short Rest</td></tr>
-      <tr><td>12:15 - 1:45 PM</td><td>Study: Web Development</td></tr>
-      <tr><td>1:45 - 2:00 PM</td><td>Tea/Water break</td></tr>
-      <tr><td>2:00 - 3:30 PM</td><td>Study: Java</td></tr>
-      <tr><td>3:30 - 4:30 PM</td><td>Personal time / Power Nap</td></tr>
-      <tr><td>4:30 - 6:00 PM</td><td>Practice / Projects / Revision</td></tr>
-      <tr><td>6:00 - 7:00 PM</td><td>Dinner + Chill time</td></tr>
-      <tr><td>7:00 - 8:30 PM</td><td>Light study / Notes / Review</td></tr>
-      <tr><td>8:30 - 9:00 PM</td><td>Wind down + Phone off</td></tr>
-      <tr><td>9:00 PM - 5:00 AM</td><td>Sleep</td></tr>
-    </tbody>
-  </table>
+  <h1>Pradeep's Weekly Study Timetable</h1>
+
+  <script>
+    const subjects = ["VLSI", "Embedded Systems", "Game Design", "Web Development", "Java"];
+    const baseSchedule = [
+      ["5:00 - 5:30 AM", "Wake up + Freshen up"],
+      ["5:30 - 6:00 AM", "Workout / Exercise"],
+      ["6:00 - 6:30 AM", "Breakfast"],
+      ["9:30 - 9:45 AM", "Short Break (snack/stretch)"],
+      ["11:15 - 12:15 PM", "Lunch + Short Rest"],
+      ["1:45 - 2:00 PM", "Tea/Water break"],
+      ["3:30 - 4:30 PM", "Personal time / Power Nap"],
+      ["4:30 - 6:00 PM", "Practice / Projects / Revision"],
+      ["6:00 - 7:00 PM", "Dinner + Chill time"],
+      ["7:00 - 8:30 PM", "Light study / Notes / Review"],
+      ["8:30 - 9:00 PM", "Wind down + Phone off"],
+      ["9:00 PM - 5:00 AM", "Sleep"]
+    ];
+
+    function generateDayTable(dayIndex, title) {
+      const rotated = subjects.slice(dayIndex).concat(subjects.slice(0, dayIndex));
+      const timeSlots = [
+        ["6:30 - 8:00 AM", `Study: ${rotated[0]}`],
+        ["8:00 - 9:30 AM", `Study: ${rotated[1]}`],
+        ["9:45 - 11:15 AM", `Study: ${rotated[2]}`],
+        ["12:15 - 1:45 PM", `Study: ${rotated[3]}`],
+        ["2:00 - 3:30 PM", `Study: ${rotated[4]}`],
+      ];
+
+      const fullDay = [
+        ...baseSchedule.slice(0, 3),
+        ...timeSlots.slice(0, 2),
+        baseSchedule[3],
+        timeSlots[2],
+        baseSchedule[4],
+        timeSlots[3],
+        baseSchedule[5],
+        timeSlots[4],
+        ...baseSchedule.slice(6)
+      ];
+
+      let html = `<h2>${title}</h2><table><tr><th>Time</th><th>Activity</th></tr>`;
+      fullDay.forEach(([time, activity]) => {
+        html += `<tr><td>${time}</td><td>${activity}</td></tr>`;
+      });
+      html += `</table>`;
+      return html;
+    }
+
+    const today = new Date();
+    const dayIndex = today.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
+    const timetableDay = (dayIndex - 1 + 5) % 5; // Map Mon–Fri → 0–4, cycle
+
+    document.write(generateDayTable(timetableDay, "📅 Today’s Plan"));
+
+    for (let i = 1; i < 5; i++) {
+      const index = (timetableDay + i) % 5;
+      document.write(generateDayTable(index, `Day ${index + 1}`));
+    }
+  </script>
 </body>
 </html>
