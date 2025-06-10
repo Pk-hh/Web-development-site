@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Pradeep's Rotating Study Timetable</title>
+  <title>Pradeep's Timetable with Current Task</title>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -32,10 +32,15 @@
     tr:nth-child(even) {
       background-color: #e0fbfc;
     }
+    .highlight {
+      background-color: #ffd166 !important;
+    }
   </style>
 </head>
 <body>
-  <h1>Pradeep's Weekly Study Timetable</h1>
+  <h1>Pradeep's Daily Timetable</h1>
+  <div id="current-task"></div>
+  <div id="timetable"></div>
 
   <script>
     const subjects = ["VLSI", "Embedded Systems", "Game Design", "Web Development", "Java"];
@@ -43,9 +48,14 @@
       ["5:00 - 5:30 AM", "Wake up + Freshen up"],
       ["5:30 - 6:00 AM", "Workout / Exercise"],
       ["6:00 - 6:30 AM", "Breakfast"],
+      ["6:30 - 8:00 AM", ""],
+      ["8:00 - 9:30 AM", ""],
       ["9:30 - 9:45 AM", "Short Break (snack/stretch)"],
+      ["9:45 - 11:15 AM", ""],
       ["11:15 - 12:15 PM", "Lunch + Short Rest"],
+      ["12:15 - 1:45 PM", ""],
       ["1:45 - 2:00 PM", "Tea/Water break"],
+      ["2:00 - 3:30 PM", ""],
       ["3:30 - 4:30 PM", "Personal time / Power Nap"],
       ["4:30 - 6:00 PM", "Practice / Projects / Revision"],
       ["6:00 - 7:00 PM", "Dinner + Chill time"],
@@ -54,46 +64,72 @@
       ["9:00 PM - 5:00 AM", "Sleep"]
     ];
 
-    function generateDayTable(dayIndex, title) {
-      const rotated = subjects.slice(dayIndex).concat(subjects.slice(0, dayIndex));
-      const timeSlots = [
-        ["6:30 - 8:00 AM", `Study: ${rotated[0]}`],
-        ["8:00 - 9:30 AM", `Study: ${rotated[1]}`],
-        ["9:45 - 11:15 AM", `Study: ${rotated[2]}`],
-        ["12:15 - 1:45 PM", `Study: ${rotated[3]}`],
-        ["2:00 - 3:30 PM", `Study: ${rotated[4]}`],
-      ];
-
-      const fullDay = [
-        ...baseSchedule.slice(0, 3),
-        ...timeSlots.slice(0, 2),
-        baseSchedule[3],
-        timeSlots[2],
-        baseSchedule[4],
-        timeSlots[3],
-        baseSchedule[5],
-        timeSlots[4],
-        ...baseSchedule.slice(6)
-      ];
-
-      let html = `<h2>${title}</h2><table><tr><th>Time</th><th>Activity</th></tr>`;
-      fullDay.forEach(([time, activity]) => {
-        html += `<tr><td>${time}</td><td>${activity}</td></tr>`;
-      });
-      html += `</table>`;
-      return html;
-    }
-
+    // Get today's shuffled subjects
     const today = new Date();
-    const dayIndex = today.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
-    const timetableDay = (dayIndex - 1 + 5) % 5; // Map Mon–Fri → 0–4, cycle
+    const jsDay = today.getDay(); // Sunday = 0
+    const subjectIndex = (jsDay === 0 || jsDay === 6) ? 0 : (jsDay - 1) % 5;
+    const rotatedSubjects = subjects.slice(subjectIndex).concat(subjects.slice(0, subjectIndex));
 
-    document.write(generateDayTable(timetableDay, "📅 Today’s Plan"));
-
-    for (let i = 1; i < 5; i++) {
-      const index = (timetableDay + i) % 5;
-      document.write(generateDayTable(index, `Day ${index + 1}`));
+    // Assign study subjects to the correct time slots
+    const studyTimes = [3, 4, 6, 8, 10]; // indices where study slots are
+    for (let i = 0; i < 5; i++) {
+      baseSchedule[studyTimes[i]][1] = `Study: ${rotatedSubjects[i]}`;
     }
+
+    // Convert time string to minutes
+    function timeToMinutes(str) {
+      const [start, end] = str.split(" - ");
+      const convert = (s) => {
+        const [t, p] = s.split(" ");
+        let [h, m] = t.split(":").map(Number);
+        if (p === "PM" && h !== 12) h += 12;
+        if (p === "AM" && h === 12) h = 0;
+        return h * 60 + m;
+      };
+      return [convert(start), convert(end)];
+    }
+
+    const now = new Date();
+    const nowMinutes = now.getHours() * 60 + now.getMinutes();
+
+    let currentSlotIndex = -1;
+    baseSchedule.forEach(([range], i) => {
+      const [start, end] = timeToMinutes(range);
+      if (nowMinutes >= start && nowMinutes < end) {
+        currentSlotIndex = i;
+      }
+    });
+
+    // Show current task
+    if (currentSlotIndex !== -1) {
+      document.getElementById("current-task").innerHTML = `
+        <h2>🔔 Current Task</h2>
+        <table>
+          <tr><th>Time</th><th>Activity</th></tr>
+          <tr class="highlight">
+            <td>${baseSchedule[currentSlotIndex][0]}</td>
+            <td>${baseSchedule[currentSlotIndex][1]}</td>
+          </tr>
+        </table>
+      `;
+    } else {
+      document.getElementById("current-task").innerHTML = `
+        <h2>🔔 Current Task</h2>
+        <p style="text-align:center;">🎉 You're off the clock now or it's between tasks.</p>
+      `;
+    }
+
+    // Show full day plan
+    let fullTable = `<h2>📋 Full Day Plan</h2><table><tr><th>Time</th><th>Activity</th></tr>`;
+    baseSchedule.forEach(([time, task], i) => {
+      fullTable += `
+        <tr ${i === currentSlotIndex ? 'class="highlight"' : ''}>
+          <td>${time}</td><td>${task}</td>
+        </tr>
+      `;
+    });
+    fullTable += "</table>";
+    document.getElementById("timetable").innerHTML = fullTable;
   </script>
 </body>
 </html>
