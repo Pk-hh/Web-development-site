@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Smart Daily Timetable</title>
-  <link rel="manifest" href="manifest.json">
+  <title>Pradeep's Smart Timetable</title>
+  <link rel="manifest" href="manifest.json" />
   <meta name="theme-color" content="#0a9396" />
   <style>
     body {
@@ -49,22 +49,20 @@
     const subjects = ["VLSI", "Embedded Systems", "Web Development", "Java"];
 
     const baseSchedule = [
-      ["5:00 AM - 5:30 AM", "Wake up + Freshen up"],
-      ["5:30 AM - 6:00 AM", "Workout / Exercise"],
-      ["6:00 AM - 6:30 AM", "Breakfast"],
-      ["6:30 AM - 8:00 AM", ""],
+      ["4:00 AM - 6:00 AM", "Online Explanation"],
+      ["6:00 AM - 7:00 AM", "Workout"],
+      ["7:00 AM - 8:00 AM", "Fresh up + Breakfast"],
       ["8:00 AM - 9:30 AM", ""],
-      ["9:30 AM - 9:45 AM", "Short Break (snack/stretch)"],
-      ["9:45 AM - 11:15 AM", ""],
-      ["11:15 AM - 12:15 PM", "Lunch + Short Rest"],
-      ["12:15 PM - 1:45 PM", ""],
-      ["1:45 PM - 2:00 PM", "Tea/Water break"],
-      ["2:00 PM - 4:00 PM", "Game Design (Fixed)"],
-      ["4:30 PM - 6:00 PM", "Practice / Projects / Revision"],
-      ["6:00 PM - 7:00 PM", "Dinner + Chill time"],
-      ["7:00 PM - 8:30 PM", "Light study / Notes / Review"],
-      ["8:30 PM - 9:00 PM", "Wind down + Phone off"],
-      ["9:00 PM - 5:00 AM", "Sleep"]
+      ["9:30 AM - 10:45 AM", ""],
+      ["10:45 AM - 12:00 PM", ""],
+      ["12:00 PM - 1:15 PM", ""],
+      ["1:15 PM - 2:00 PM", "Lunch & Relax"],
+      ["2:00 PM - 4:00 PM", "Game Design (Fixed Daily)"],
+      ["4:00 PM - 6:00 PM", "Practice / Revision"],
+      ["6:00 PM - 7:00 PM", "Personal Time"],
+      ["7:00 PM - 8:30 PM", "Light Study / Notes"],
+      ["8:30 PM - 9:00 PM", "Wind Down"],
+      ["9:00 PM - 4:00 AM", "Sleep"]
     ];
 
     const today = new Date();
@@ -72,7 +70,7 @@
     const subjectIndex = (jsDay === 0 || jsDay === 6) ? 0 : (jsDay - 1) % 4;
     const rotatedSubjects = subjects.slice(subjectIndex).concat(subjects.slice(0, subjectIndex));
 
-    const studySlots = [3, 4, 6, 8]; 
+    const studySlots = [3, 4, 5, 6];
     for (let i = 0; i < 4; i++) {
       baseSchedule[studySlots[i]][1] = `Study: ${rotatedSubjects[i]}`;
     }
